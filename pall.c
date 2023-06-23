@@ -1,13 +1,23 @@
 #include "monty.h"
 
 /**
- * pall - prints the stack
- * @stack: stack given by main in start.c
- * @line_cnt: amount of lines
- *
- * Return: void
+ * pall - prints all the values on the stack,
+ * starting from the top of the stack.
+ * @stack: head
+ * @line_number: unused
  */
-void pall(stack_t **stack, unsigned int line_cnt __attribute__((unused)))
+
+void	pall(stack_t **stack, unsigned int line_number __attribute__((unused)))
 {
-	print_stack(*stack);
+	stack_t	*head;
+
+	if (!stack || !(*stack))
+		return;
+
+	head = *stack;
+	while (head)
+	{
+		printf("%d\n", head->n);
+		head = head->next;
+	}
 }
